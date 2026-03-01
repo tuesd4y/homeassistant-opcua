@@ -1,10 +1,6 @@
-# OPCUA Client over Asyncua
+# OPCUA Client for HomeAssistant
 
 This is an hacs integration using asyncua to connect various industrial PLC to HA. My initial approach was to develop a gateway which connect the PLC over RESTful API. After a couple of integration for projects, I found that it would be beneficial to the community to have a custom integration in HA for OPC UA servers.
-
-I found an older project which uses the python-opcua, which is deprecated and decided to start a new integration using opcua-asyncio.
-
-[![Buy me a beer](https://img.shields.io/badge/Donate-Buy%20me%20a%20beer-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/kvsoong)
 
 <br>
 
@@ -125,8 +121,8 @@ This entity allows you to create any type of device class binary sensor specifie
           device_class: "power" # Device class according to Homeassistant binary sensors
           hub: "plc-01" # Defined Asyncua coordinator
           nodeid: "ns=1;s=1000" # Node id from OPCUA server
-        - name: "binary-sensor-01" 
-          unique_id: "binary-sensor-01" 
+        - name: "binary-sensor-01"
+          unique_id: "binary-sensor-01"
           device_class: "power"
           hub: "plc-01"
           nodeid: "ns=1;s=1000"
@@ -257,8 +253,8 @@ switch asyncua: !include_dir_merge_list asyncua-switch/
       device_class: "power" # Device class according to Homeassistant binary sensors
       hub: "plc-01" # Defined Asyncua coordinator
       nodeid: "ns=1;s=1000" # Node id from OPCUA server
-    - name: "binary-sensor-01" 
-      unique_id: "binary-sensor-01" 
+    - name: "binary-sensor-01"
+      unique_id: "binary-sensor-01"
       device_class: "power"
       hub: "plc-01"
       nodeid: "ns=1;s=1000"

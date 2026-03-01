@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 <!--
-Please only post a bug report if you are willing to perform some testing to help solve the problem. 
+Please only post a bug report if you are willing to perform some testing to help solve the problem.
 -->
 
 ### Checklist
@@ -22,7 +22,7 @@ Please only post a bug report if you are willing to perform some testing to help
 [What actually happened]
 
 <!--
-  Check the HA logs (Configuration -> Info) for possible errors 
+  Check the HA logs (Configuration -> Info) for possible errors
 -->
 
 ### Steps to Reproduce

@@ -17,9 +17,9 @@ jobs:
 
       - name: Patch manifest and zip
         run: |
-          sed -i 's/v0.0.0/${{ steps.version.outputs.version }}/' custom_components/asyncua/manifest.json
-          cd custom_components/asyncua/
-          zip ../../asyncua.zip -r ./
+          sed -i 's/v0.0.0/${{ steps.version.outputs.version }}/' custom_components/opcua/manifest.json
+          cd custom_components/opcua/
+          zip ../../opcua.zip -r ./
 
       - uses: JasonEtco/upload-to-release@master
         env:

@@ -1,8 +1,8 @@
-"""Constants for the asyncua integration."""
+"""Constants for the opcua integration."""
 
-DOMAIN = "asyncua"
+DOMAIN = "opcua"
 
-"""Constant required for asnycua hub"""
+"""Constant required for opcua hub"""
 CONF_HUB_ID = "name"
 CONF_HUB_MANUFACTURER = "manufacturer"
 CONF_HUB_MODEL = "model"
@@ -24,7 +24,7 @@ CONF_NODE_UNIT_OF_MEASUREMENT = "unit_of_measurement"
 """Constant required for opcua entities identified as a contactor or switch"""
 CONF_NODE_SWITCH_DI = "nodeid_switch_di"
 
-"""COnstant required to set values"""
+"""Constant required to set values"""
 ATTR_NODE_HUB = "hub"
 ATTR_NODE_ID = "nodeid"
 ATTR_VALUE = "value"

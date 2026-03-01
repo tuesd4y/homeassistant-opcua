@@ -3,25 +3,24 @@
 from __future__ import annotations
 
 import asyncio
-from collections.abc import Callable
-from datetime import timedelta
 import functools
 import logging
 import time
+from collections.abc import Callable
+from datetime import timedelta
 from typing import Any, Union
 
+import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
 from asyncua import Client, ua
 from asyncua.common import ua_utils
 from asyncua.ua.uatypes import DataValue
-import voluptuous as vol
-
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import (
     ConfigEntryAuthFailed,
     ConfigEntryError,
     ConfigEntryNotReady,
 )
-import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_component import DEFAULT_SCAN_INTERVAL
 from homeassistant.helpers.typing import ConfigType
