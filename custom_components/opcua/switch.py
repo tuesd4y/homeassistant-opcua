@@ -57,7 +57,7 @@ async def async_setup_platform(
 
     coordinator_nodes: dict[str, list[dict[str, str]]] = {}
     coordinators: dict[str, AsyncuaCoordinator] = {}
-    asyncua_switches: list = []
+    opcua_switches: list = []
 
     for _idx_node, val_node in enumerate(config[CONF_NODES]):
         if val_node[CONF_NODE_HUB] not in coordinator_nodes:
@@ -74,7 +74,7 @@ async def async_setup_platform(
         coordinators[key_coordinator].add_sensors(sensors=val_coordinator)
 
         for _idx_sensor, val_sensor in enumerate(val_coordinator):
-            asyncua_switches.append(
+            opcua_switches.append(
                 AsyncuaSwitch(
                     coordinator=coordinators[key_coordinator],
                     name=val_sensor[CONF_NODE_NAME],
@@ -84,8 +84,8 @@ async def async_setup_platform(
                     unique_id=val_sensor.get(CONF_NODE_UNIQUE_ID),
                 )
             )
-    async_add_entities(asyncua_switches)
-    for idx_switch, val_switch in enumerate(asyncua_switches):
+    async_add_entities(opcua_switches)
+    for idx_switch, val_switch in enumerate(opcua_switches):
         await val_switch.async_init()
         _LOGGER.debug("Initialized switch %s - %s", idx_switch, val_switch.attr_name)
 

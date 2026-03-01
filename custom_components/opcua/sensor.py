@@ -62,7 +62,7 @@ async def async_setup_platform(
 
     coordinator_nodes: dict[str, list[dict[str, str]]] = {}
     coordinators: dict[str, AsyncuaCoordinator] = {}
-    asyncua_sensors: list = []
+    opcua_sensors: list = []
 
     # Compile dictionary of {hub: [node0, node1, ...]}
     for _idx_node, val_node in enumerate(config[CONF_NODES]):
@@ -81,7 +81,7 @@ async def async_setup_platform(
 
         # Create sensors with injecting respective asyncua coordinator
         for _idx_sensor, val_sensor in enumerate(val_coordinator):
-            asyncua_sensors.append(
+            opcua_sensors.append(
                 AsyncuaSensor(
                     coordinator=coordinators[key_coordinator],
                     name=val_sensor[CONF_NODE_NAME],
@@ -92,7 +92,7 @@ async def async_setup_platform(
                     unit_of_measurement=val_sensor.get(CONF_NODE_UNIT_OF_MEASUREMENT),
                 )
             )
-    async_add_entities(new_entities=asyncua_sensors)
+    async_add_entities(new_entities=opcua_sensors)
 
 
 class AsyncuaSensor(CoordinatorEntity[AsyncuaCoordinator], SensorEntity):

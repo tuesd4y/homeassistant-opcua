@@ -1,4 +1,4 @@
-"""The asyncua integration."""
+"""The opcua integration."""
 
 from __future__ import annotations
 
@@ -43,7 +43,7 @@ from .const import (
     SERVICE_SET_VALUE,
 )
 
-_LOGGER = logging.getLogger("asyncua")
+_LOGGER = logging.getLogger("opcua")
 _LOGGER.setLevel(logging.WARNING)
 
 BASE_SCHEMA = vol.Schema(
@@ -90,7 +90,7 @@ async def async_setup(
     hass: HomeAssistant,
     config: ConfigType,
 ) -> bool:
-    """Set up the template for asyncua including OpcuaHub and AsyncuaCoordinator."""
+    """Set up the template for opcua including OpcuaHub and AsyncuaCoordinator."""
     hass.data[DOMAIN] = {}
 
     async def _set_value(service):

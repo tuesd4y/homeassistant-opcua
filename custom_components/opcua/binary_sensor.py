@@ -57,7 +57,7 @@ async def async_setup_platform(
     # where node0 equals {"name": "node0", "unique_id": "node0", ...}.
     coordinator_nodes: dict[str, list[dict[str, str]]] = {}
     coordinators: dict[str, AsyncuaCoordinator] = {}
-    asyncua_sensors: list = []
+    opcua_sensors: list = []
 
     # Compile coordinators with respective nodes
     for _idx_node, val_node in enumerate(config[CONF_NODES]):
@@ -70,14 +70,14 @@ async def async_setup_platform(
         # Get the respective asyncua coordinator
         if key_coordinator not in hass.data[DOMAIN]:
             raise ConfigEntryError(
-                f"Asyncua hub {key_coordinator} not found. Specify a valid asyncua hub in the configuration."
+                f"OPCUA hub {key_coordinator} not found. Specify a valid asyncua hub in the configuration."
             )
         coordinators[key_coordinator] = hass.data[DOMAIN][key_coordinator]
         coordinators[key_coordinator].add_sensors(sensors=val_coordinator)
 
         # Create sensors with injecting respective asyncua coordinator
         for _idx_sensor, val_sensor in enumerate(val_coordinator):
-            asyncua_sensors.append(
+            opcua_sensors.append(
                 AsyncuaBinarySensor(
                     coordinator=coordinators[key_coordinator],
                     name=val_sensor[CONF_NODE_NAME],
@@ -87,7 +87,7 @@ async def async_setup_platform(
                     device_class=val_sensor.get(CONF_NODE_DEVICE_CLASS),
                 )
             )
-    async_add_entities(new_entities=asyncua_sensors)
+    async_add_entities(new_entities=opcua_sensors)
 
 
 class AsyncuaBinarySensor(CoordinatorEntity[AsyncuaCoordinator], BinarySensorEntity):
